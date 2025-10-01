@@ -10,12 +10,11 @@ const Start2 = () => {
           </h1>
           <span className="text-lg font-mono cursor-pointer">
             Selamat datang di permainan ini! Di sini kamu bisa menikmati serunya
-            bermain bersama teman dengan penuh keseruan. Setiap langkah yang kamu
-            ambil akan membawa tantangan baru untuk diselesaikan. Gunakan
+            bermain bersama teman dengan penuh keseruan. Setiap langkah yang
+            kamu ambil akan membawa tantangan baru untuk diselesaikan. Gunakan
             strategi terbaikmu agar bisa memenangkan permainan. Nikmati waktu
             bermainmu dan rasakan pengalaman seru yang tidak akan terlupakan.
           </span>
-
         </div>
         <div className="flex justify-between items-center w-full px-10">
           <Button
@@ -23,7 +22,7 @@ const Start2 = () => {
             textColor="text-black"
             className="px-14 py-2 border border-black rounded-lg hover:bg-black hover:text-white transition-all duration-700 cursor-pointer"
             type="button"
-            onClick={() => (window.location.href = "/")}
+            onClick={() => navigate("/")}
           >
             Back
           </Button>
@@ -32,7 +31,7 @@ const Start2 = () => {
             textColor="text-black"
             className="px-14 py-2 border border-black rounded-lg hover:bg-black hover:text-white transition-all duration-700 cursor-pointer"
             type="button"
-            onClick={() => (window.location.href = "/login")}
+            onClick={() => navigate("/login")}
           >
             Next
           </Button>

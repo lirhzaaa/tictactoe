@@ -10,7 +10,7 @@ const Start1 = () => {
           textColor="text-black"
           className="px-14 py-2 border border-black rounded-lg hover:bg-black hover:text-white transition-all duration-700 cursor-pointer"
           type="button"
-          onClick={() => (window.location.href = "/start")}
+          onClick={() => navigate("/start")}
         >
           Start Game
         </Button>
@@ -19,7 +19,7 @@ const Start1 = () => {
           textColor="text-black"
           className="px-15 py-2 border border-black rounded-lg hover:bg-red-600 hover:text-white transition-all duration-700 cursor-pointer"
           type="button"
-          onClick={() => (window.location.href = "https://google.com")}
+          onClick={() => navigate("/start")}
         >
           Quit Game
         </Button>
