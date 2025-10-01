@@ -2,10 +2,10 @@
 
 @keyframes moveCloud {
   from {
-    transform: translateX(100vw); /* mulai dari kanan layar */
+    transform: translateX(100vw); 
   }
   to {
-    transform: translateX(-200px); /* keluar kiri */
+    transform: translateX(-200px); 
   }
 }
 

@@ -123,7 +123,7 @@ export default function Game() {
               className="absolute animate-cloud"
               style={{
                 top,
-                left: "100%",
+                // left: "100%",
                 width: `${size}px`,
                 height: "auto",
                 animationDuration: `${20 + i * 5}s`,
