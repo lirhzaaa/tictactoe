@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Button = ({ children, className, onClick, type = "button" }) => {
   return (
@@ -12,6 +13,7 @@ const Login = () => {
   const [player1Name, setPlayer1Name] = useState("");
   const [player2Name, setPlayer2Name] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleStart = () => {
     if (!player1Name.trim() || !player2Name.trim()) {
@@ -29,7 +31,7 @@ const Login = () => {
     };
 
     window.localStorage.setItem("gameData", JSON.stringify(gameData));
-    window.location.href = "/dashboard";
+    navigate("/dashboard");
   };
 
   const clouds = useMemo(() => {
@@ -64,7 +66,9 @@ const Login = () => {
 
       <div className="flex flex-col justify-center items-center bg-[#F0E7D5] w-[500px] h-[500px] rounded-2xl shadow-2xl border-2 border-gray-500/20 p-8 z-10 relative">
         <div className="flex flex-col justify-center items-center text-center px-2 mb-5">
-          <h1 className="text-6xl font-mono font-bold cursor-pointer mb-5">TicTacToe</h1>
+          <h1 className="text-6xl font-mono font-bold cursor-pointer mb-5">
+            TicTacToe
+          </h1>
           <span className="text-lg font-mono cursor-pointer">
             Selamat Datang Di Game TicTacToe, Silahkan Input Username Player 1
             dan Player 2!
