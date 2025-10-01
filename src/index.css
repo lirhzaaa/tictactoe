@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@keyframes moveCloud {
+    from {
+        transform: translateX(100vw);
+    }
+
+    to {
+        transform: translateX(-200px);
+    }
+}
+
+.animate-cloud {
+    left: 0;
+    animation-name: moveCloud;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+  @keyframes cloud {
+    0% { transform: translateX(0); opacity: 1; }
+    100% { transform: translateX(-220vw); opacity: 1; }
+  }
+  .animate-cloud {
+    animation-name: cloud;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
