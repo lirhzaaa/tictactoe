@@ -50,7 +50,7 @@ const Login = () => {
       {clouds.map((cloud) => (
         <img
           key={cloud.id}
-          src="../public/img/awan.png"
+          src="/img/awan.png"
           alt="Image Awan"
           className="absolute animate-cloud"
           style={{
@@ -122,12 +122,12 @@ const Login = () => {
 
       <div className="absolute bottom-0 left-0 right-0 flex justify-between">
         <img
-          src="../public/img/animation2.png"
+          src="/img/animation2.png"
           alt="Image Animation 1"
           className="w-100 h-100 object-cover"
         />
         <img
-          src="../public/img/animation1.png"
+          src="/img/animation1.png"
           alt="Image Animation 2"
           className="w-100 h-100 object-cover"
         />
