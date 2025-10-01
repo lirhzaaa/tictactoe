@@ -1,18 +1,16 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 
-const Square = ({ value, onSquaresClick, disabled }) => {
-  return (
-    <button
-      className={`w-20 h-20 border-2 border-gray-400 bg-white font-bold text-4xl cursor-pointer hover:bg-gray-100 transition-colors duration-200 rounded-md shadow-sm ${
-        disabled ? "cursor-not-allowed opacity-50" : ""
-      }`}
-      onClick={onSquaresClick}
-      disabled={disabled}
-    >
-      {value}
-    </button>
-  );
-};
+const Square = ({ value, onSquaresClick, disabled }) => (
+  <button
+    className={`w-20 h-20 border-2 border-gray-400 bg-white font-bold text-4xl cursor-pointer hover:bg-gray-100 transition-colors duration-200 rounded-md shadow-sm ${
+      disabled ? "cursor-not-allowed opacity-50" : ""
+    }`}
+    onClick={onSquaresClick}
+    disabled={disabled}
+  >
+    {value}
+  </button>
+);
 
 const Board = ({ xIsNext, squares, onPlay }) => {
   const handleClick = (i) => {
@@ -83,6 +81,19 @@ export default function Game() {
 
   const getWinnerName = () => (winner ? getCurrentPlayerName(winner) : "");
 
+  const clouds = useMemo(() => {
+    return Array.from({ length: 9 }, (_, i) => {
+      const row = i % 3;
+      const topPositions = [10, 40, 70];
+      const randomOffset = Math.random() * 10 - 5;
+      const top = topPositions[row] + randomOffset;
+      const size = 120 + Math.random() * 150;
+      const duration = 20 + Math.random() * 40;
+      const delay = -Math.random() * duration;
+      return { id: i, top, size, duration, delay };
+    });
+  }, []);
+
   const moves = history.map((_, move) => {
     const moveSymbol = move % 2 === 1 ? "X" : "O";
     const playerName = getCurrentPlayerName(moveSymbol);
@@ -107,34 +118,29 @@ export default function Game() {
 
   return (
     <div className="relative bg-gradient-to-br from-[#F0E7D5] to-[#E8D5B7] min-h-screen w-full flex flex-col items-center justify-start p-4 pt-8 overflow-hidden">
+      {/* Background Awan */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {[...Array(9)].map((_, i) => {
-          const row = i % 3;
-          const topPositions = [10, 40, 70];
-          const randomOffset = Math.random() * 10 - 5;
-          const top = `${topPositions[row] + randomOffset}%`;
-          const size = 150 + Math.random() * 150;
-
-          return (
-            <img
-              key={i}
-              src="/img/awan.png"
-              alt="cloud"
-              className="absolute animate-cloud"
-              style={{
-                top,
-                // left: "100%",
-                width: `${size}px`,
-                height: "auto",
-                animationDuration: `${20 + i * 5}s`,
-                animationDelay: `${i * 3}s`,
-              }}
-            />
-          );
-        })}
+        {clouds.map((cloud) => (
+          <img
+            key={cloud.id}
+            src="/img/awan.png"
+            alt="cloud"
+            className="absolute animate-cloud"
+            style={{
+              top: `${cloud.top}%`,
+              left: "100%",
+              width: `${cloud.size}px`,
+              height: "auto",
+              animationDuration: `${cloud.duration}s`,
+              animationDelay: `${cloud.delay}s`,
+            }}
+          />
+        ))}
       </div>
 
+      {/* Header Game */}
       <div className="relative z-10 flex w-full max-w-4xl justify-between items-start mb-6">
+        {/* Player 1 */}
         <div className="p-4 text-center">
           <h2 className="text-3xl font-bold text-gray-800">
             {gameData.player1}
@@ -165,6 +171,7 @@ export default function Game() {
           </p>
         </div>
 
+        {/* Board */}
         <div className="flex flex-col text-center">
           <h1 className="text-5xl font-bold font-mono mb-7">TicTacToe</h1>
           <Board
@@ -174,6 +181,7 @@ export default function Game() {
           />
         </div>
 
+        {/* Player 2 */}
         <div className="p-4 text-center">
           <h2 className="text-3xl font-bold text-gray-800">
             {gameData.player2}
@@ -205,11 +213,14 @@ export default function Game() {
         </div>
       </div>
 
+      {/* Modal Winner */}
       {winner && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="text-center">
-            <span className="text-white text-5xl font-semibold mb-25">Winner!!!</span>
-            <h2 className="text-4xl font-bold text-white mb-20">
+            <span className="text-white text-5xl font-semibold block mb-6">
+              Winner!!!
+            </span>
+            <h2 className="text-4xl font-bold text-white mb-8">
               {getWinnerName()} Wins!
             </h2>
             <button
@@ -222,10 +233,11 @@ export default function Game() {
         </div>
       )}
 
+      {/* Modal Draw */}
       {isDraw && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-white mb-20">
+            <h2 className="text-4xl font-bold text-white mb-8">
               It's a Draw!
             </h2>
             <button
@@ -238,6 +250,7 @@ export default function Game() {
         </div>
       )}
 
+      {/* Game History */}
       <div className="relative z-10 w-full max-w-4xl bg-white rounded-lg shadow-md p-4">
         <h3 className="text-xl font-bold mb-4 text-center">Game History</h3>
         <div className="h-48 overflow-y-auto space-y-2">
