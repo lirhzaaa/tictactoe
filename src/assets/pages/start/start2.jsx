@@ -17,24 +17,18 @@ const Start2 = () => {
           </span>
         </div>
         <div className="flex justify-between items-center w-full px-10">
-          <Button
-            color="bg-transparant"
-            textColor="text-black"
-            className="px-14 py-2 border border-black rounded-lg hover:bg-black hover:text-white transition-all duration-700 cursor-pointer"
-            type="button"
-            onClick={() => navigate("/")}
+          <a
+            className="bg-transparant text-black px-14 py-2 border border-black rounded-lg hover:bg-black hover:text-white transition-all duration-700 cursor-pointer"
+            hraf="/"
           >
             Back
-          </Button>
-          <Button
-            color="bg-transparant"
-            textColor="text-black"
-            className="px-14 py-2 border border-black rounded-lg hover:bg-black hover:text-white transition-all duration-700 cursor-pointer"
-            type="button"
-            onClick={() => navigate("/login")}
+          </a>
+          <a
+            className="bg-transparant text-black px-14 py-2 border border-black rounded-lg hover:bg-black hover:text-white transition-all duration-700 cursor-pointer"
+            href="/login"
           >
             Next
-          </Button>
+          </a>
         </div>
       </div>
     </div>
