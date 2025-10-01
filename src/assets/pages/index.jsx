@@ -118,7 +118,7 @@ export default function Game() {
           return (
             <img
               key={i}
-              src="img/awan.png"
+              src="/img/awan.png"
               alt="cloud"
               className="absolute animate-cloud"
               style={{
