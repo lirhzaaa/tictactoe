@@ -4,9 +4,9 @@ TicTacToe is a simple yet engaging web-based game that brings the timeless class
 
 ## ⚙️ Tech Stack
 
-- **React.js** – Frontend framework for building dynamic UI  
-- **Tailwind CSS** – Utility-first CSS framework for styling  
-- **Lucide React** – Icon library for clear and consistent visuals  
+- **React.js** - Frontend framework for building dynamic UI  
+- **Tailwind CSS** - Utility-first CSS framework for styling  
+- **Lucide React** - Icon library for clear and consistent visuals  
 
 ## ✨ Features
 
